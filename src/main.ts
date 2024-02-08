@@ -1,4 +1,5 @@
 import express from "express";
+const fs = require('fs');
 
 const PORT = 3000;
 
@@ -6,8 +7,16 @@ const app = express();
 
 // パスに注意する。src/sample-scenesに置く場合は、staticの引数にsrc/sample-scenesを指定する。
 // npm startをする場所は、webXR-express-testディレクトリですること。
-app.use(express.static("sample-scenes-20231010"));
+app.use(express.static("202402081923Desert"));
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// httpsにする
+const option = {
+    key: fs.readFileSync('./cert/privatekey.pem'),
+    cert: fs.readFileSync('./cert/cert.pem'),    
+}
+const server = require('https').createServer(option, app)
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+})
+server.listen(PORT, () => console.log(`Listening on PORT ${PORT}!`))
