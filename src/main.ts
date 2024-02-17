@@ -9,6 +9,9 @@ const app = express();
 // npm startをする場所は、webXR-express-testディレクトリですること。
 app.use(express.static("202402081923Desert"));
 
+// http
+// app.listen(PORT, () => console.log(`Listening on PORT ${PORT}!`))
+
 // httpsにする
 const option = {
     key: fs.readFileSync('./cert/privatekey.pem'),
