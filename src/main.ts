@@ -10,16 +10,16 @@ const app = express();
 app.use(express.static("Build"));
 
 // http
-// app.listen(PORT, () => console.log(`Listening on PORT ${PORT}!`))
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT}!`))
 
 // httpsにする
-const option = {
-    key: fs.readFileSync('./cert/privatekey.pem'),
-    cert: fs.readFileSync('./cert/cert.pem'),    
-}
-const server = require('https').createServer(option, app)
+// const option = {
+//     key: fs.readFileSync('./cert/privatekey.pem'),
+//     cert: fs.readFileSync('./cert/cert.pem'),    
+// }
+// const server = require('https').createServer(option, app)
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
-server.listen(PORT, () => console.log(`Listening on PORT ${PORT}!`))
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// })
+// server.listen(PORT, () => console.log(`Listening on PORT ${PORT}!`))
